@@ -16,10 +16,13 @@ DrawingSquaresAudioProcessorEditor::DrawingSquaresAudioProcessorEditor (DrawingS
     setLookAndFeel (&mainLookAndFeel);
 
     addAndMakeVisible (button1);
+    button1.setButtonText("D#");
 
     addAndMakeVisible (button2);
+    button2.setButtonText("C#");
 
     addAndMakeVisible (button3);
+    button3.setButtonText("B");
 
     setSize (600, 600);
 }

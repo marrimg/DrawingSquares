@@ -33,6 +33,8 @@ public:
     int borderThick = 4;
     int borderThin = 2;
 
+
+
     void drawButtonBackground (juce::Graphics& g, juce::Button& button, const juce::Colour& backgroundColour,
                                bool, bool isButtonDown) override
     {
@@ -52,31 +54,25 @@ public:
         g.fillRoundedRectangle (borderThick + 2, borderThick + 2, buttonArea.getWidth() - borderThick, buttonArea.getHeight() - borderThick, 9);
         
         
-        //Label text
-        g.setColour (white);
-        g.setFont(getCustomFont());
-        g.setFont(30);
+//        float labelX = buttonArea.getCentreX() - (buttonArea.getWidth() * .4);
+//        float labelY = buttonArea.getHeight() - (buttonArea.getHeight() * .9);
+
         
-        float labelX = buttonArea.getCentreX() - (buttonArea.getWidth() * .4);
-        float labelY = buttonArea.getHeight() - (buttonArea.getHeight() * .9);
+//        g.drawText("D#", buttonArea.getTopLeft(), buttonArea.getHeight(), buttonArea.getCentreY(), buttonArea.getWidth(), juce::Justification::centredTop, true);
         
-        g.drawText("D#", labelX, labelY, buttonArea.getCentreY(), buttonArea.getWidth() ,4);
+//        g.drawText("D#", buttonArea, juce::Justification::centredTop, true);
+        
+//        g.drawText("D#", labelX, labelY, buttonArea.getCentreY(), buttonArea.getWidth() ,4);
 
         //Make LED
         float ledCenterX = buttonArea.getCentreX() - (buttonArea.getWidth() * .4);
         float ledCenterY = buttonArea.getBottom() - (buttonArea.getHeight() * .4);
         
-//        g.setColour (darkGrey1);
-//        g.drawRect(ledCenterX, ledCenterY, buttonArea.getWidth() * .8,  buttonArea.getHeight() * .2);
-//        g.fillRect(ledCenterX, ledCenterY, buttonArea.getWidth() * .8,  buttonArea.getHeight() * .2);
-        
-        // From Marri
         juce::Rectangle<int> ledRect (ledCenterX, ledCenterY, buttonArea.getWidth() * .8, buttonArea.getHeight() * .25);
         
         g.setColour (darkGrey1);
         g.drawRect (ledRect, borderThin) ;
         
-        //
     
         if(button.getToggleState() == 0) g.setColour (lightGrey);
         
@@ -89,11 +85,31 @@ public:
         
         g.fillRect(ledRect);
 
-//        g.fillRect(ledCenterX, ledCenterY, (buttonArea.getWidth() * .8) -borderWidth,  (buttonArea.getHeight() * .2) -borderWidth);
+    }
+    
+    void drawButtonText (juce::Graphics& g, juce::TextButton& button, bool, bool isButtonDown) override
+    {
+        auto font = getTextButtonFont (button, button.getHeight());
+        g.setFont (font);
+        g.setColour (white);
         
-//        g.drawRect(ledCenterX -1, ledCenterY -1, (buttonArea.getWidth() * .8) -2,  (buttonArea.getHeight() * .2) -2) ;
-//        g.fillRect(ledCenterX, ledCenterY, (buttonArea.getWidth() * .8) -2,  (buttonArea.getHeight() * .2) -2);
+        //Label text
 
+        g.setFont(getCustomFont());
+        g.setFont(20);
+
+        auto yIndent = button.proportionOfHeight (0.25);
+        auto cornerSize = juce::jmin (button.getHeight(), button.getWidth()) / 2;
+
+        auto fontHeight = juce::roundToInt (font.getHeight() * 0.6f);
+        auto leftIndent  = juce::jmin (fontHeight, 2 + cornerSize / (button.isConnectedOnLeft()  ? 4 : 2));
+        auto rightIndent = juce::jmin (fontHeight, 2 + cornerSize / (button.isConnectedOnRight() ? 4 : 2));
+        auto textWidth = button.getWidth() - leftIndent - rightIndent;
+
+        if (textWidth > 0)
+            g.drawFittedText (button.getButtonText(),
+                              leftIndent, yIndent, textWidth, button.getHeight() - yIndent,
+                              juce::Justification::centredTop, 2);
     }
 
 };
