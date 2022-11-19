@@ -30,7 +30,9 @@ static const juce::Font getCustomFont()
 class ScaleButton : public juce::LookAndFeel_V4
 {
 public:
-    int borderWidth = 4;
+    int borderThick = 4;
+    int borderThin = 2;
+
     void drawButtonBackground (juce::Graphics& g, juce::Button& button, const juce::Colour& backgroundColour,
                                bool, bool isButtonDown) override
     {
@@ -38,16 +40,16 @@ public:
         //Main area and border
         auto buttonArea = button.getLocalBounds();
         
-        buttonArea.removeFromLeft (borderWidth);
-        buttonArea.removeFromTop (borderWidth);
-        buttonArea.removeFromRight (borderWidth);
-        buttonArea.removeFromBottom (borderWidth);
+        buttonArea.removeFromLeft (borderThick);
+        buttonArea.removeFromTop (borderThick);
+        buttonArea.removeFromRight (borderThick);
+        buttonArea.removeFromBottom (borderThick);
         button.setClickingTogglesState(1);
         
         g.setColour (darkGrey1);
-        g.drawRoundedRectangle(borderWidth, borderWidth, buttonArea.getWidth(), buttonArea.getHeight(),12, borderWidth);
+        g.drawRoundedRectangle(borderThick, borderThick, buttonArea.getWidth(), buttonArea.getHeight(),12, borderThick);
         g.setColour (midGrey);
-        g.fillRoundedRectangle (borderWidth + 2, borderWidth + 2, buttonArea.getWidth() - borderWidth, buttonArea.getHeight() - borderWidth, 9);
+        g.fillRoundedRectangle (borderThick + 2, borderThick + 2, buttonArea.getWidth() - borderThick, buttonArea.getHeight() - borderThick, 9);
         
         
         //Label text
@@ -69,23 +71,25 @@ public:
 //        g.fillRect(ledCenterX, ledCenterY, buttonArea.getWidth() * .8,  buttonArea.getHeight() * .2);
         
         // From Marri
-        juce::Rectangle<int> ledRect (ledCenterX, ledCenterY, buttonArea.getWidth() * .8, buttonArea.getHeight() * .2);
-        
-        ledRect.removeFromLeft (borderWidth);
-        ledRect.removeFromTop (borderWidth);
-        ledRect.removeFromRight (borderWidth);
-        ledRect.removeFromBottom (borderWidth);
+        juce::Rectangle<int> ledRect (ledCenterX, ledCenterY, buttonArea.getWidth() * .8, buttonArea.getHeight() * .25);
         
         g.setColour (darkGrey1);
-//        g.drawRect(ledCenterX, ledCenterY, buttonArea.getWidth(), buttonArea.getHeight()) ;
+        g.drawRect (ledRect, borderThin) ;
         
         //
     
         if(button.getToggleState() == 0) g.setColour (lightGrey);
         
         if(button.getToggleState() == 1) g.setColour (orange);
+        
+        ledRect.removeFromLeft (borderThin);
+        ledRect.removeFromTop (borderThin);
+        ledRect.removeFromRight (borderThin);
+        ledRect.removeFromBottom (borderThin);
+        
+        g.fillRect(ledRect);
 
-        g.fillRect(ledCenterX, ledCenterY, (buttonArea.getWidth() * .8) -borderWidth,  (buttonArea.getHeight() * .2) -borderWidth);
+//        g.fillRect(ledCenterX, ledCenterY, (buttonArea.getWidth() * .8) -borderWidth,  (buttonArea.getHeight() * .2) -borderWidth);
         
 //        g.drawRect(ledCenterX -1, ledCenterY -1, (buttonArea.getWidth() * .8) -2,  (buttonArea.getHeight() * .2) -2) ;
 //        g.fillRect(ledCenterX, ledCenterY, (buttonArea.getWidth() * .8) -2,  (buttonArea.getHeight() * .2) -2);
