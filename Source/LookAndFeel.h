@@ -33,8 +33,6 @@ public:
     int borderThick = 4;
     int borderThin = 2;
 
-
-
     void drawButtonBackground (juce::Graphics& g, juce::Button& button, const juce::Colour& backgroundColour,
                                bool, bool isButtonDown) override
     {
@@ -50,41 +48,36 @@ public:
         
         g.setColour (darkGrey1);
         g.drawRoundedRectangle(borderThick, borderThick, buttonArea.getWidth(), buttonArea.getHeight(),12, borderThick);
-        g.setColour (midGrey);
+        g.setColour (lightGrey);
         g.fillRoundedRectangle (borderThick + 2, borderThick + 2, buttonArea.getWidth() - borderThick, buttonArea.getHeight() - borderThick, 9);
-        
-        
-//        float labelX = buttonArea.getCentreX() - (buttonArea.getWidth() * .4);
-//        float labelY = buttonArea.getHeight() - (buttonArea.getHeight() * .9);
-
-        
-//        g.drawText("D#", buttonArea.getTopLeft(), buttonArea.getHeight(), buttonArea.getCentreY(), buttonArea.getWidth(), juce::Justification::centredTop, true);
-        
-//        g.drawText("D#", buttonArea, juce::Justification::centredTop, true);
-        
-//        g.drawText("D#", labelX, labelY, buttonArea.getCentreY(), buttonArea.getWidth() ,4);
 
         //Make LED
-        float ledCenterX = buttonArea.getCentreX() - (buttonArea.getWidth() * .4);
-        float ledCenterY = buttonArea.getBottom() - (buttonArea.getHeight() * .4);
         
-        juce::Rectangle<int> ledRect (ledCenterX, ledCenterY, buttonArea.getWidth() * .8, buttonArea.getHeight() * .25);
+        float leftIndent = 12;
+        float rightIndent = 12;
+        float ledWidth = button.getWidth() - leftIndent - rightIndent;
+        float ledHeight = buttonArea.getHeight() * .2;
+        
+        juce::Path ledRect;
+        
+        ledRect.addRoundedRectangle(leftIndent, button.getHeight() * .6, ledWidth, ledHeight, 1);
+        
+        if(button.getToggleState() == 0)
+        {
+            juce::ColourGradient ledGradient = juce::ColourGradient(lightGrey, leftIndent , ledHeight, darkGrey1, leftIndent + ledWidth,  button.getHeight() * .6, 1);
+            g.setFillType(ledGradient);
+        }
+
+        if(button.getToggleState() == 1)
+        {
+            juce::ColourGradient ledGradient = juce::ColourGradient(lightGrey, leftIndent, ledHeight, orange, ledWidth * .1, ledHeight * .1, 1);
+            g.setFillType(ledGradient);
+        }
+        
+        g.fillPath(ledRect);
         
         g.setColour (darkGrey1);
-        g.drawRect (ledRect, borderThin) ;
-        
-    
-        if(button.getToggleState() == 0) g.setColour (lightGrey);
-        
-        if(button.getToggleState() == 1) g.setColour (orange);
-        
-        ledRect.removeFromLeft (borderThin);
-        ledRect.removeFromTop (borderThin);
-        ledRect.removeFromRight (borderThin);
-        ledRect.removeFromBottom (borderThin);
-        
-        g.fillRect(ledRect);
-
+        g.strokePath (ledRect, juce::PathStrokeType (2.0f));
     }
     
     void drawButtonText (juce::Graphics& g, juce::TextButton& button, bool, bool isButtonDown) override

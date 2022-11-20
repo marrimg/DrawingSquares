@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "ScaleButton::drawButtonBackground(juce::Graphics&amp;, juce::Button&amp;, juce::Colour const&amp;, bool, bool):LookAndFeel.h">
+         <PersistentStrings>
+            <PersistentString
+               value = "test.h">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>
