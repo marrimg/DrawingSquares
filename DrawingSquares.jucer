@@ -4,7 +4,6 @@
               addUsingNamespaceToJuceHeader="0" displaySplashScreen="1" jucerFormatVersion="1">
   <MAINGROUP id="pESYb0" name="DrawingSquares">
     <GROUP id="{87C50E34-B095-9C64-2DAB-88A3BC3B31DE}" name="Source">
-      <FILE id="DyTBys" name="LookAndFeel.h" compile="0" resource="0" file="Source/LookAndFeel.h"/>
       <GROUP id="{ABEED754-BE9C-75B7-4E82-794216CAE8C3}" name="Resources">
         <FILE id="ZUAA0M" name="HelveticaNeue.ttc" compile="0" resource="1"
               file="Source/Resources/HelveticaNeue.ttc"/>
@@ -15,6 +14,8 @@
             file="Source/PluginProcessor.h"/>
       <FILE id="aw0N0y" name="PluginEditor.cpp" compile="1" resource="0"
             file="Source/PluginEditor.cpp"/>
+      <FILE id="DyTBys" name="GuiElements.h" compile="0" resource="0" file="Source/GuiElements.h"/>
+      <FILE id="Vf4jDT" name="Components.h" compile="0" resource="0" file="Source/Components.h"/>
       <FILE id="TiWxpj" name="PluginEditor.h" compile="0" resource="0" file="Source/PluginEditor.h"/>
     </GROUP>
   </MAINGROUP>

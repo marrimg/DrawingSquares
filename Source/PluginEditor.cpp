@@ -13,8 +13,10 @@
 DrawingSquaresAudioProcessorEditor::DrawingSquaresAudioProcessorEditor (DrawingSquaresAudioProcessor& p)
     : AudioProcessorEditor (&p), audioProcessor (p)
 {
-    setLookAndFeel (&mainLookAndFeel);
+    addAndMakeVisible (scene);
 
+    /*
+     setLookAndFeel (&mainLookAndFeel);
     addAndMakeVisible (button1);
     button1.setButtonText("D#");
 
@@ -23,7 +25,7 @@ DrawingSquaresAudioProcessorEditor::DrawingSquaresAudioProcessorEditor (DrawingS
 
     addAndMakeVisible (button3);
     button3.setButtonText("B");
-
+*/
     setSize (600, 600);
 }
 
@@ -41,10 +43,11 @@ void DrawingSquaresAudioProcessorEditor::paint (juce::Graphics& g)
 
 void DrawingSquaresAudioProcessorEditor::resized()
 {
-    
+    scene.setBounds (0, 0, getWidth(), getHeight());
+    /*
     auto area = getLocalBounds();
     button1.setBounds (area.removeFromLeft(buttonWidth).removeFromTop(buttonHeight).reduced(border));
     button2.setBounds (area.removeFromLeft(buttonWidth).removeFromTop(buttonHeight).reduced(border));
     button3.setBounds (area.removeFromLeft(buttonWidth).removeFromTop(buttonHeight).reduced(border));
-
+*/
 }

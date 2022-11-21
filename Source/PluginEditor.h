@@ -10,7 +10,8 @@
 
 #include <JuceHeader.h>
 #include "PluginProcessor.h"
-#include "LookAndFeel.h"
+#include "GuiElements.h"
+#include "Components.h"
 
 //==============================================================================
 /**
@@ -37,10 +38,13 @@ private:
     void drawButtonBackground (juce::Graphics& g, juce::Button& button, const juce::Colour& backgroundColour,
                                bool, bool isButtonDown);
     
+    SceneComponent scene;
+    
+    /*
     ScaleButton mainLookAndFeel;
-    juce::TextButton button1;
+   juce::TextButton button1;
     juce::TextButton button2;
     juce::TextButton button3;
-
+*/
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (DrawingSquaresAudioProcessorEditor)
 };
