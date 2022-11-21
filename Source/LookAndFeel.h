@@ -14,10 +14,12 @@
 const juce::Colour black = juce::Colour::fromFloatRGBA (0.0f, 0.0f, 0.0f, 1.0f);
 const juce::Colour darkGrey1 = juce::Colour::fromFloatRGBA (0.14f, 0.14f, 0.14f, 1.0f);
 const juce::Colour midGrey = juce::Colour::fromFloatRGBA (0.25f, 0.25f, 0.25f, 1.0f);
-const juce::Colour lightGrey = juce::Colour::fromFloatRGBA (0.34f, 0.34f, 0.34f, 1.0f);
+const juce::Colour lightGrey = juce::Colour::fromFloatRGBA (0.45f, 0.45f, 0.45f, 1.0f);
 const juce::Colour darkGrey2 = juce::Colour::fromFloatRGBA (0.45f, 0.45f, 0.45f, 1.0f);
 const juce::Colour white = juce::Colour::fromFloatRGBA (1.0f, 1.0f, 1.0f, 1.0f);
+const juce::Colour whiteGrey = juce::Colour::fromFloatRGBA (.6f, .6f, 0.6f, 1.0f);
 const juce::Colour orange = juce::Colour::fromFloatRGBA (0.91f, 0.38f, 0.19f, 1.0f);
+const juce::Colour lightOrange = juce::Colour::fromFloatRGBA (0.93f, 0.67f, 0.114f, 1.0f);
 
 //Embed font
 static const juce::Font getCustomFont()
@@ -60,17 +62,20 @@ public:
         
         juce::Path ledRect;
         
-        ledRect.addRoundedRectangle(leftIndent, button.getHeight() * .6, ledWidth, ledHeight, 1);
+        ledRect.addRoundedRectangle(leftIndent, button.getHeight() * .6, ledWidth, ledHeight, 2);
+        
+        float ledCenterX = ledRect.getBounds().getCentreX();
+        float ledCenterY = ledRect.getBounds().getCentreY();
         
         if(button.getToggleState() == 0)
         {
-            juce::ColourGradient ledGradient = juce::ColourGradient(lightGrey, leftIndent , ledHeight, darkGrey1, leftIndent + ledWidth,  button.getHeight() * .6, 1);
+            juce::ColourGradient ledGradient = juce::ColourGradient(whiteGrey, ledCenterX, ledCenterY, lightGrey, ledRect.getBounds().getX() + 3,  ledRect.getBounds().getY() + 3, true);
             g.setFillType(ledGradient);
         }
 
         if(button.getToggleState() == 1)
         {
-            juce::ColourGradient ledGradient = juce::ColourGradient(lightGrey, leftIndent, ledHeight, orange, ledWidth * .1, ledHeight * .1, 1);
+            juce::ColourGradient ledGradient = juce::ColourGradient(lightOrange, ledCenterX, ledCenterY, orange, ledRect.getBounds().getX() +3,  ledRect.getBounds().getY() +3, true);
             g.setFillType(ledGradient);
         }
         
