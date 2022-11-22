@@ -11,28 +11,7 @@
 #pragma once
 
 #include "GuiElements.h"
-
-/*
-class ScaleButtonComponent   : public juce::Component
-{
-public:
-    ScaleButtonComponent() {}
-    
-    void paint (juce::Graphics& g) override
-    {
-        //setLookAndFeel (&mainLookAndFeel);
-        ScaleButton mainLookAndFeel;
-        juce::TextButton button1;
-        addAndMakeVisible (button1);
-        button1.setButtonText("D#");
-    }
-    
-private:
-    //==============================================================================
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (ScaleButtonComponent)
-};
-*/
-
+#include "PluginEditor.h"
 
 //==============================================================================
 class SceneComponent: public juce::Component
@@ -47,6 +26,8 @@ public:
         setLookAndFeel(&mainLookAndFeel);
         addAndMakeVisible(button1);
         button1.setButtonText("PooP");
+        
+       // buttonAttachment = std::make_unique<juce::AudioProcessorValueTreeState::ButtonAttachment>(audioProcessor.apvts, "apvtsButtVar", scene.chordButton2);
     }
     
     void paint (juce::Graphics& g) override
@@ -58,8 +39,6 @@ public:
     {
         auto area = getLocalBounds();
         button1.setBounds(area.removeFromLeft(buttonWidth).removeFromTop(buttonHeight).reduced(border));
-        auto separation = juce::jlimit (2, 10, getHeight() / 20);
-       // c_scale_button.setBounds (0, (int) (getHeight() * 0.20) + separation / 2, getWidth(), (int) (getHeight() * 0.80) - separation);
     }
     
     ~SceneComponent(){

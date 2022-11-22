@@ -25,9 +25,13 @@ public:
     //==============================================================================
     void paint (juce::Graphics&) override;
     void resized() override;
+    
+    typedef juce::AudioProcessorValueTreeState::ButtonAttachment ButtonAttachment;
 
 private:
 
+    std::unique_ptr<ButtonAttachment> buttonAttachment;
+    
     int border = 4;
     
     int buttonHeight = 100;
@@ -35,16 +39,7 @@ private:
     
     DrawingSquaresAudioProcessor& audioProcessor;
     
-    void drawButtonBackground (juce::Graphics& g, juce::Button& button, const juce::Colour& backgroundColour,
-                               bool, bool isButtonDown);
-    
     SceneComponent scene;
-    
-    /*
-    ScaleButton mainLookAndFeel;
-   juce::TextButton button1;
-    juce::TextButton button2;
-    juce::TextButton button3;
-*/
+
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (DrawingSquaresAudioProcessorEditor)
 };

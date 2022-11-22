@@ -93,14 +93,12 @@ void DrawingSquaresAudioProcessor::changeProgramName (int index, const juce::Str
 //==============================================================================
 void DrawingSquaresAudioProcessor::prepareToPlay (double sampleRate, int samplesPerBlock)
 {
-    // Use this method as the place to do any pre-playback
-    // initialisation that you need..
+
 }
 
 void DrawingSquaresAudioProcessor::releaseResources()
 {
-    // When playback stops, you can use this as an opportunity to free up any
-    // spare memory, etc.
+
 }
 
 #ifndef JucePlugin_PreferredChannelConfigurations
@@ -110,10 +108,7 @@ bool DrawingSquaresAudioProcessor::isBusesLayoutSupported (const BusesLayout& la
     juce::ignoreUnused (layouts);
     return true;
   #else
-    // This is the place where you check if the layout is supported.
-    // In this template code we only support mono or stereo.
-    // Some plugin hosts, such as certain GarageBand versions, will only
-    // load plugins that support stereo bus layouts.
+
     if (layouts.getMainOutputChannelSet() != juce::AudioChannelSet::mono()
      && layouts.getMainOutputChannelSet() != juce::AudioChannelSet::stereo())
         return false;
@@ -158,16 +153,24 @@ juce::AudioProcessorEditor* DrawingSquaresAudioProcessor::createEditor()
 //==============================================================================
 void DrawingSquaresAudioProcessor::getStateInformation (juce::MemoryBlock& destData)
 {
-    // You should use this method to store your parameters in the memory block.
-    // You could do that either as raw data, or use the XML or ValueTree classes
-    // as intermediaries to make it easy to save and load complex data.
 }
 
 void DrawingSquaresAudioProcessor::setStateInformation (const void* data, int sizeInBytes)
 {
-    // You should use this method to restore your parameters from this memory block,
-    // whose contents will have been created by the getStateInformation() call.
 }
+
+//JXN Function to create APVTS params
+juce::AudioProcessorValueTreeState::ParameterLayout
+DrawingSquaresAudioProcessor::createParameterLayout()
+{
+    juce::AudioProcessorValueTreeState::ParameterLayout params;
+    
+    for (int i = 1; i < 9; ++i) {
+        params.add(std::make_unique<juce::AudioParameterFloat>(juce::ParameterID {juce::String (i),i}, juce::String (i), juce::NormalisableRange<float>(0.001, 0.5, 0.001), 0.002));
+    }
+    return params;
+}
+
 
 //==============================================================================
 // This creates new instances of the plugin..
