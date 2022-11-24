@@ -20,12 +20,22 @@ class SceneComponent: public juce::Component
 public:
 
     std::unique_ptr<ScaleButton> c_scale_button = std::make_unique<ScaleButton>();
-    
+    std::vector<std::unique_ptr<juce::TextButton>> scaleButtons;
+         
     SceneComponent()
     {
         setLookAndFeel(&mainLookAndFeel);
         addAndMakeVisible(button1);
         button1.setButtonText("PooP");
+        std::vector<std::string> scaleButtonLabels = {"A", "B", "C", "D", "E", "F", "G"};
+        
+        for (int i = 0; i <= scaleButtonLabels.size(); i++)
+        {
+          auto scaleButt = std::make_unique<juce::TextButton>(scaleButtonLabels[i]);
+          scaleButt->setBounds(i * 100, 100, 100, 100);
+          addAndMakeVisible(*scaleButt);
+          scaleButtons.push_back(std::move(scaleButt));
+        }
         
        // buttonAttachment = std::make_unique<juce::AudioProcessorValueTreeState::ButtonAttachment>(audioProcessor.apvts, "apvtsButtVar", scene.chordButton2);
     }
