@@ -22,6 +22,8 @@ public:
     //==============================================================================
     DrawingSquaresAudioProcessor();
     ~DrawingSquaresAudioProcessor() override;
+    
+    juce::AudioProcessorValueTreeState& getVTS() { return stateStore; }
 
     //==============================================================================
     void prepareToPlay (double sampleRate, int samplesPerBlock) override;
@@ -57,10 +59,12 @@ public:
     void setStateInformation (const void* data, int sizeInBytes) override;
 
     //JXN add AVPTS (everything is in pp.h and pp.cpp in this example
-    static juce::AudioProcessorValueTreeState::ParameterLayout createParameterLayout();
-    juce::AudioProcessorValueTreeState apvts {*this, nullptr, "Parameters", createParameterLayout()};
+    juce::Value poopParameter;
     
 private:
+    juce::AudioProcessorValueTreeState stateStore;
+    static juce::AudioProcessorValueTreeState::ParameterLayout myParameterLayout();
+    void linkParameterValues();
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (DrawingSquaresAudioProcessor)
 };

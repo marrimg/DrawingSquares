@@ -12,6 +12,7 @@
 
 #include "GuiElements.h"
 #include "PluginEditor.h"
+#include "PluginProcessor.h"
 
 //==============================================================================
 class SceneComponent: public juce::Component
@@ -21,12 +22,13 @@ public:
 
     std::unique_ptr<ScaleButton> c_scale_button = std::make_unique<ScaleButton>();
     std::vector<std::unique_ptr<juce::TextButton>> scaleButtons;
-         
+          
     SceneComponent()
     {
         setLookAndFeel(&mainLookAndFeel);
         addAndMakeVisible(button1);
         button1.setButtonText("PooP");
+//        poopAttachment.reset (new juce::AudioProcessorValueTreeState::ButtonAttachment (apvts, "poopButton", button1));
         std::vector<std::string> scaleButtonLabels = {"A", "B", "C", "D", "E", "F", "G"};
         
         for (int i = 0; i <= scaleButtonLabels.size(); i++)
@@ -37,7 +39,7 @@ public:
           scaleButtons.push_back(std::move(scaleButt));
         }
         
-       // buttonAttachment = std::make_unique<juce::AudioProcessorValueTreeState::ButtonAttachment>(audioProcessor.apvts, "apvtsButtVar", scene.chordButton2);
+//        buttonAttachment = std::make_unique<juce::AudioProcessorValueTreeState::ButtonAttachment>(audioProcessor.apvts, "apvtsButtVar", scene.chordButton2);
     }
     
     void paint (juce::Graphics& g) override
@@ -63,5 +65,6 @@ private:
     int border = 4;
     int buttonHeight = 100;
     int buttonWidth = 60;
+//    std::unique_ptr<juce::AudioProcessorValueTreeState::ButtonAttachment> poopAttachment;
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (SceneComponent)
 };

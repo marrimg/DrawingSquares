@@ -19,7 +19,7 @@
 class DrawingSquaresAudioProcessorEditor  : public juce::AudioProcessorEditor
 {
 public:
-    DrawingSquaresAudioProcessorEditor (DrawingSquaresAudioProcessor&);
+    DrawingSquaresAudioProcessorEditor (DrawingSquaresAudioProcessor& p);
     ~DrawingSquaresAudioProcessorEditor() override;
 
     //==============================================================================
@@ -27,6 +27,7 @@ public:
     void resized() override;
     
     typedef juce::AudioProcessorValueTreeState::ButtonAttachment ButtonAttachment;
+//    juce::AudioProcessorValueTreeState::ButtonAttachment ButtonAttachment(audioProcessor, "assButton", assButt);
 
 private:
 

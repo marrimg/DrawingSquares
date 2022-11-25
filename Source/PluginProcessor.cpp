@@ -21,7 +21,9 @@ DrawingSquaresAudioProcessor::DrawingSquaresAudioProcessor()
                      #endif
                        )
 #endif
+, stateStore(*this, nullptr, juce::Identifier("STATESTORE"), myParameterLayout())
 {
+    linkParameterValues();
 }
 
 DrawingSquaresAudioProcessor::~DrawingSquaresAudioProcessor()
@@ -160,16 +162,29 @@ void DrawingSquaresAudioProcessor::setStateInformation (const void* data, int si
 }
 
 //JXN Function to create APVTS params
+
 juce::AudioProcessorValueTreeState::ParameterLayout
-DrawingSquaresAudioProcessor::createParameterLayout()
+DrawingSquaresAudioProcessor::myParameterLayout()
 {
-    juce::AudioProcessorValueTreeState::ParameterLayout params;
-    
-    for (int i = 1; i < 9; ++i) {
-        params.add(std::make_unique<juce::AudioParameterFloat>(juce::ParameterID {juce::String (i),i}, juce::String (i), juce::NormalisableRange<float>(0.001, 0.5, 0.001), 0.002));
-    }
-    return params;
+    return {
+        std::make_unique<juce::AudioParameterBool>(juce::ParameterID {"poopParameter", 1}, "poopParameter", false)
+    };
 }
+
+void DrawingSquaresAudioProcessor::linkParameterValues() {
+    poopParameter.referTo(stateStore.getParameterAsValue("poopParameter"));
+}
+
+//juce::AudioProcessorValueTreeState::ParameterLayout
+//DrawingSquaresAudioProcessor::createParameterLayout()
+//{
+//    juce::AudioProcessorValueTreeState::ParameterLayout params;
+//
+//    for (int i = 1; i < 9; ++i) {
+//        params.add(std::make_unique<juce::AudioParameterFloat>(juce::ParameterID {juce::String (i),i}, juce::String (i), juce::NormalisableRange<float>(0.001, 0.5, 0.001), 0.002));
+//    }
+//    return params;
+//}
 
 
 //==============================================================================
