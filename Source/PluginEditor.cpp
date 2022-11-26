@@ -14,6 +14,7 @@ DrawingSquaresAudioProcessorEditor::DrawingSquaresAudioProcessorEditor (DrawingS
     : AudioProcessorEditor (&p), audioProcessor (p), scene(p)
 {
     addAndMakeVisible (scene);
+//    parameterChanged("poopParameterId");
 
     /*
      setLookAndFeel (&mainLookAndFeel);
@@ -39,6 +40,19 @@ void DrawingSquaresAudioProcessorEditor::paint (juce::Graphics& g)
 {
 
 }
+
+//void parameterChanged (const juce::String& parameterID, float newValue) {
+//    std::cout << newValue;
+//}
+//struct PoopListener : public juce::AudioProcessorValueTreeState::Listener
+//{
+//
+////    PoopListener(SynthWaveform& wf) : juce::AudioProcessorValueTreeState::Listener(), waveform(wf) {}
+//    void parameterChanged(const juce::String&, float newValue) override
+//    {
+//        std::cout << newValue;
+//    }
+//};
 
 
 void DrawingSquaresAudioProcessorEditor::resized()

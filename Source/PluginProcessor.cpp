@@ -135,6 +135,9 @@ void DrawingSquaresAudioProcessor::processBlock (juce::AudioBuffer<float>& buffe
     juce::ScopedNoDenormals noDenormals;
     auto totalNumInputChannels  = getTotalNumInputChannels();
     auto totalNumOutputChannels = getTotalNumOutputChannels();
+    
+    poopParam = stateStore.getRawParameterValue("poopParameterId");
+    std::cout << *poopParam << std::endl;
 
     for (auto i = totalNumInputChannels; i < totalNumOutputChannels; ++i)
         buffer.clear (i, 0, buffer.getNumSamples());
@@ -159,6 +162,9 @@ juce::AudioProcessorEditor* DrawingSquaresAudioProcessor::createEditor()
 //==============================================================================
 void DrawingSquaresAudioProcessor::getStateInformation (juce::MemoryBlock& destData)
 {
+    auto state = stateStore.copyState();
+    std::unique_ptr<juce::XmlElement> xml (state.createXml());
+//    std::cout << xml << "TEST";
 }
 
 void DrawingSquaresAudioProcessor::setStateInformation (const void* data, int sizeInBytes)
@@ -171,7 +177,7 @@ juce::AudioProcessorValueTreeState::ParameterLayout
 DrawingSquaresAudioProcessor::myParameterLayout()
 {
     return {
-        std::make_unique<juce::AudioParameterBool>(juce::ParameterID {"poopParameterId", 1}, "poopParameter", false)
+        std::make_unique<juce::AudioParameterBool>(juce::ParameterID {"poopParameterId", 1}, "poopParameterId", false)
     };
 }
 

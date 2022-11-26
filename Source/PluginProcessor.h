@@ -62,6 +62,7 @@ public:
 
     //JXN add AVPTS (everything is in pp.h and pp.cpp in this example
     juce::Value poopParameter;
+    std::atomic<float>* poopParam = nullptr;
     
 private:
     juce::AudioProcessorValueTreeState stateStore;
