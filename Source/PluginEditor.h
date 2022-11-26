@@ -31,6 +31,7 @@ public:
 
 private:
 
+    DrawingSquaresAudioProcessor& audioProcessor;
     std::unique_ptr<ButtonAttachment> buttonAttachment;
     
     int border = 4;
@@ -38,7 +39,7 @@ private:
     int buttonHeight = 100;
     int buttonWidth = 60;
     
-    DrawingSquaresAudioProcessor& audioProcessor;
+
     
     SceneComponent scene;
 

@@ -11,7 +11,7 @@
 
 //==============================================================================
 DrawingSquaresAudioProcessorEditor::DrawingSquaresAudioProcessorEditor (DrawingSquaresAudioProcessor& p)
-    : AudioProcessorEditor (&p), audioProcessor (p)
+    : AudioProcessorEditor (&p), audioProcessor (p), scene(p)
 {
     addAndMakeVisible (scene);
 

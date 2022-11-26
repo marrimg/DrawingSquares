@@ -23,11 +23,13 @@ public:
     std::unique_ptr<ScaleButton> c_scale_button = std::make_unique<ScaleButton>();
     std::vector<std::unique_ptr<juce::TextButton>> scaleButtons;
           
-    SceneComponent()
+    SceneComponent(DrawingSquaresAudioProcessor& p)
     {
         setLookAndFeel(&mainLookAndFeel);
         addAndMakeVisible(button1);
+        poopAttachment.reset(new juce::AudioProcessorValueTreeState::ButtonAttachment(p.getVTS(), "poopParameterId", button1));
         button1.setButtonText("PooP");
+ 
 //        poopAttachment.reset (new juce::AudioProcessorValueTreeState::ButtonAttachment (apvts, "poopButton", button1));
         std::vector<std::string> scaleButtonLabels = {"A", "B", "C", "D", "E", "F", "G"};
         
@@ -62,6 +64,7 @@ private:
     //==============================================================================
     ScaleButton mainLookAndFeel;
     juce::TextButton button1;
+    std::unique_ptr<juce::AudioProcessorValueTreeState::ButtonAttachment> poopAttachment;
     int border = 4;
     int buttonHeight = 100;
     int buttonWidth = 60;

@@ -23,7 +23,9 @@ public:
     DrawingSquaresAudioProcessor();
     ~DrawingSquaresAudioProcessor() override;
     
-    juce::AudioProcessorValueTreeState& getVTS() { return stateStore; }
+    juce::AudioProcessorValueTreeState& getVTS() { return stateStore;
+    };
+    
 
     //==============================================================================
     void prepareToPlay (double sampleRate, int samplesPerBlock) override;

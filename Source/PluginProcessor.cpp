@@ -30,6 +30,10 @@ DrawingSquaresAudioProcessor::~DrawingSquaresAudioProcessor()
 {
 }
 
+void DrawingSquaresAudioProcessor::linkParameterValues() {
+    poopParameter.referTo(stateStore.getParameterAsValue("poopParameterId"));
+}
+
 //==============================================================================
 const juce::String DrawingSquaresAudioProcessor::getName() const
 {
@@ -167,13 +171,11 @@ juce::AudioProcessorValueTreeState::ParameterLayout
 DrawingSquaresAudioProcessor::myParameterLayout()
 {
     return {
-        std::make_unique<juce::AudioParameterBool>(juce::ParameterID {"poopParameter", 1}, "poopParameter", false)
+        std::make_unique<juce::AudioParameterBool>(juce::ParameterID {"poopParameterId", 1}, "poopParameter", false)
     };
 }
 
-void DrawingSquaresAudioProcessor::linkParameterValues() {
-    poopParameter.referTo(stateStore.getParameterAsValue("poopParameter"));
-}
+
 
 //juce::AudioProcessorValueTreeState::ParameterLayout
 //DrawingSquaresAudioProcessor::createParameterLayout()

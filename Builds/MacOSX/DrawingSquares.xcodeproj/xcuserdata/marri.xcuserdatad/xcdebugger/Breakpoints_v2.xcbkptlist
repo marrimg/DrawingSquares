@@ -7,17 +7,144 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "176A00F1-3DBE-4737-BFC0-7C1DB95FCE62"
+            uuid = "27E3E001-38A4-4D44-AA8D-72B83BEAE5F2"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../../Source/PluginProcessor.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "174"
-            endingLineNumber = "174"
-            landmarkName = "DrawingSquaresAudioProcessor::linkParameterValues()"
+            startingLineNumber = "173"
+            endingLineNumber = "173"
+            landmarkName = "DrawingSquaresAudioProcessor::myParameterLayout()"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A6129C52-EAC4-46C3-89D0-BFA903EB998A"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../../../../../Applications/JUCE/modules/juce_audio_plugin_client/Standalone/juce_StandaloneFilterWindow.h"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "103"
+            endingLineNumber = "103"
+            landmarkName = "StandalonePluginHolder(settingsToUse)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2BD21189-8926-4C33-A057-8AC07451E434"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../../../../../Applications/JUCE/modules/juce_audio_plugin_client/Standalone/juce_StandaloneFilterWindow.h"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "648"
+            endingLineNumber = "648"
+            landmarkName = "setupAudioDevices(enableAudioInput, preferredDefaultDeviceName, preferredSetupOptions)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "61645CE9-C3C1-4FEE-856E-376B7BC5563A"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../../../../../Applications/JUCE/modules/juce_audio_plugin_client/Standalone/juce_StandaloneFilterWindow.h"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "339"
+            endingLineNumber = "339"
+            landmarkName = "reloadAudioDeviceState(enableAudioInput, preferredDefaultDeviceName, preferredSetupOptions)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "00057954-A9AB-4AFB-BCE5-168CE034D3C8"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../../../../../Applications/JUCE/modules/juce_audio_devices/native/juce_mac_CoreAudio.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "2051"
+            endingLineNumber = "2051"
+            landmarkName = "CoreAudioIODeviceType()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "68DCB9AE-3E9D-4E73-A4ED-655BDD01609D"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../../../../../Applications/JUCE/modules/juce_audio_processors/utilities/juce_AudioProcessorValueTreeState.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "477"
+            endingLineNumber = "477"
+            landmarkName = "makeAttachment(stateToUse, parameterID, control)"
+            landmarkType = "9">
+            <Locations>
+               <Location
+                  uuid = "68DCB9AE-3E9D-4E73-A4ED-655BDD01609D - 31dec075e4d239b2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "std::__1::unique_ptr&lt;juce::SliderParameterAttachment, std::__1::default_delete&lt;juce::SliderParameterAttachment&gt; &gt; juce::makeAttachment&lt;juce::SliderParameterAttachment, juce::Slider&gt;(juce::AudioProcessorValueTreeState const&amp;, juce::String const&amp;, juce::Slider&amp;)"
+                  moduleName = "DrawingSquares"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Applications/JUCE/modules/juce_audio_processors/utilities/juce_AudioProcessorValueTreeState.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "481"
+                  endingLineNumber = "481"
+                  offsetFromSymbolStart = "28">
+               </Location>
+               <Location
+                  uuid = "68DCB9AE-3E9D-4E73-A4ED-655BDD01609D - d047cd4658e7d619"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "std::__1::unique_ptr&lt;juce::ComboBoxParameterAttachment, std::__1::default_delete&lt;juce::ComboBoxParameterAttachment&gt; &gt; juce::makeAttachment&lt;juce::ComboBoxParameterAttachment, juce::ComboBox&gt;(juce::AudioProcessorValueTreeState const&amp;, juce::String const&amp;, juce::ComboBox&amp;)"
+                  moduleName = "DrawingSquares"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Applications/JUCE/modules/juce_audio_processors/utilities/juce_AudioProcessorValueTreeState.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "481"
+                  endingLineNumber = "481"
+                  offsetFromSymbolStart = "28">
+               </Location>
+               <Location
+                  uuid = "68DCB9AE-3E9D-4E73-A4ED-655BDD01609D - 45108210370a4435"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "std::__1::unique_ptr&lt;juce::ButtonParameterAttachment, std::__1::default_delete&lt;juce::ButtonParameterAttachment&gt; &gt; juce::makeAttachment&lt;juce::ButtonParameterAttachment, juce::Button&gt;(juce::AudioProcessorValueTreeState const&amp;, juce::String const&amp;, juce::Button&amp;)"
+                  moduleName = "DrawingSquares"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Applications/JUCE/modules/juce_audio_processors/utilities/juce_AudioProcessorValueTreeState.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "481"
+                  endingLineNumber = "481"
+                  offsetFromSymbolStart = "28">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
