@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "DrawingSquaresAudioProcessorEditor::DrawingSquaresAudioProcessorEditor(DrawingSquaresAudioProcessor&amp;):PluginEditor.cpp">
+      </ContextState>
+      <ContextState
+         contextName = "DrawingSquaresAudioProcessor::processBlock(juce::AudioBuffer&lt;float&gt;&amp;, juce::MidiBuffer&amp;):PluginProcessor.cpp">
+         <PersistentStrings>
+            <PersistentString
+               value = "scaleButt1">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "DrawingSquaresAudioProcessorEditor::paint(juce::Graphics&amp;):PluginEditor.cpp">
+         <PersistentStrings>
+            <PersistentString
+               value = "scene.scaleButtons.at(2)-&gt;getToggleStateValue()">
+            </PersistentString>
+            <PersistentString
+               value = "scene">
+            </PersistentString>
+            <PersistentString
+               value = "scene.scaleButtons.at(1)-&gt;lastToggleState">
+            </PersistentString>
+            <PersistentString
+               value = "scene.scaleButtons.at(0)">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>

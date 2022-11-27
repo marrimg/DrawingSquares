@@ -136,8 +136,11 @@ void DrawingSquaresAudioProcessor::processBlock (juce::AudioBuffer<float>& buffe
     auto totalNumInputChannels  = getTotalNumInputChannels();
     auto totalNumOutputChannels = getTotalNumOutputChannels();
     
-    poopParam = stateStore.getRawParameterValue("poopParameterId");
-    std::cout << *poopParam << std::endl;
+//    poopParam = stateStore.getRawParameterValue("poopParameterId");
+//    std::cout << "POOPPARAM :" << *poopParam << std::endl;
+    
+    
+
 
     for (auto i = totalNumInputChannels; i < totalNumOutputChannels; ++i)
         buffer.clear (i, 0, buffer.getNumSamples());

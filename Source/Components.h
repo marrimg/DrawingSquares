@@ -38,6 +38,10 @@ public:
           auto scaleButt = std::make_unique<juce::TextButton>(scaleButtonLabels[i]);
           scaleButt->setBounds(i * 100, 100, 100, 100);
           addAndMakeVisible(*scaleButt);
+          p.addParameter (new juce::AudioParameterBool (juce::ParameterID {i, 1}, "scaleButt", false));
+//          p.addParameter(("scaleButt-" += std::to_string(i)) = std::make_unique<juce::AudioParameterBool> (std::string ("scaleButt-" += std::to_string(i)), std::string ("scaleButt-" += std::to_string(i)), 0, i, 0));
+//            p.addParameter(juce::ParameterID {"poopParameterId", 1}, "poopParameterId", false);
+//            text += std::to_string(i)
           scaleButtons.push_back(std::move(scaleButt));
         }
         
@@ -58,12 +62,12 @@ public:
     ~SceneComponent(){
         setLookAndFeel(nullptr);
     }
-    
+    ScaleButton mainLookAndFeel;
+    juce::TextButton button1;
     
 private:
     //==============================================================================
-    ScaleButton mainLookAndFeel;
-    juce::TextButton button1;
+
     std::unique_ptr<juce::AudioProcessorValueTreeState::ButtonAttachment> poopAttachment;
     int border = 4;
     int buttonHeight = 100;

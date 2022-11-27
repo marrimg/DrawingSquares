@@ -33,6 +33,7 @@ private:
 
     DrawingSquaresAudioProcessor& audioProcessor;
     std::unique_ptr<ButtonAttachment> buttonAttachment;
+    juce::AudioProcessorParameterGroup scaleButt1Parameter;
     
     int border = 4;
     
