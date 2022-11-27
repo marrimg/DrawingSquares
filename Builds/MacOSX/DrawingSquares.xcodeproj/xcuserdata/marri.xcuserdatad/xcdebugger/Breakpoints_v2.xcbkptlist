@@ -214,16 +214,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "4650BCC5-7A62-4205-85D4-F3E910D8BE51"
+            uuid = "44828C7E-1ECF-4F0B-B4A0-9409B0D29772"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "../../Source/Components.h"
+            filePath = "../../../../../../Applications/JUCE/modules/juce_gui_basics/components/juce_Component.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "30"
-            endingLineNumber = "30"
-            landmarkName = "SceneComponent(p)"
+            startingLineNumber = "1544"
+            endingLineNumber = "1544"
+            landmarkName = "Component::addAndMakeVisible(child, zOrder)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

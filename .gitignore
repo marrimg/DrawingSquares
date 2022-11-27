@@ -1,0 +1,5 @@
+Builds/MacOSX/build/Debug
+Builds/MacOSX/build/Debug/*
+*/Debug/*
+Builds/.DS_Store
+Builds/MacOSX/.DS_Store
