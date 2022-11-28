@@ -10,5 +10,13 @@
             </PersistentString>
          </PersistentStrings>
       </ContextState>
+      <ContextState
+         contextName = "juce::AudioProcessor::validateParameter(juce::AudioProcessorParameter*):juce_AudioProcessor.cpp">
+         <PersistentStrings>
+            <PersistentString
+               value = "param-&gt;getVersionHint()">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
    </ContextStates>
 </VariablesViewState>

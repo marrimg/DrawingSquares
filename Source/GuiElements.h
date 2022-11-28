@@ -29,7 +29,6 @@ static const juce::Font getCustomFont()
 }
 
 
-
 class ScaleButton : public juce::LookAndFeel_V4
 {
 public:
@@ -39,7 +38,6 @@ public:
     void drawButtonBackground (juce::Graphics& g, juce::Button& button, const juce::Colour& backgroundColour,
                                bool, bool isButtonDown) override
     {
-        
         //Main area and border
         auto buttonArea = button.getLocalBounds();
         

@@ -21,7 +21,7 @@ DrawingSquaresAudioProcessor::DrawingSquaresAudioProcessor()
                      #endif
                        )
 #endif
-, stateStore(*this, nullptr, juce::Identifier("STATESTORE"), myParameterLayout())
+, apvts(*this, nullptr, juce::Identifier("STATESTORE"), myParameterLayout())
 {
     linkParameterValues();
 }
@@ -31,7 +31,7 @@ DrawingSquaresAudioProcessor::~DrawingSquaresAudioProcessor()
 }
 
 void DrawingSquaresAudioProcessor::linkParameterValues() {
-    poopParameter.referTo(stateStore.getParameterAsValue("poopParameterId"));
+    //poopParameter.referTo(apvts.getParameterAsValue("poopParameterId"));
 }
 
 //==============================================================================
@@ -74,8 +74,7 @@ double DrawingSquaresAudioProcessor::getTailLengthSeconds() const
 
 int DrawingSquaresAudioProcessor::getNumPrograms()
 {
-    return 1;   // NB: some hosts don't cope very well if you tell them there are 0 programs,
-                // so this should be at least 1, even if you're not really implementing programs.
+    return 1;
 }
 
 int DrawingSquaresAudioProcessor::getCurrentProgram()
@@ -135,12 +134,6 @@ void DrawingSquaresAudioProcessor::processBlock (juce::AudioBuffer<float>& buffe
     juce::ScopedNoDenormals noDenormals;
     auto totalNumInputChannels  = getTotalNumInputChannels();
     auto totalNumOutputChannels = getTotalNumOutputChannels();
-    
-//    poopParam = stateStore.getRawParameterValue("poopParameterId");
-//    std::cout << "POOPPARAM :" << *poopParam << std::endl;
-    
-    
-
 
     for (auto i = totalNumInputChannels; i < totalNumOutputChannels; ++i)
         buffer.clear (i, 0, buffer.getNumSamples());
@@ -154,7 +147,7 @@ void DrawingSquaresAudioProcessor::processBlock (juce::AudioBuffer<float>& buffe
 //==============================================================================
 bool DrawingSquaresAudioProcessor::hasEditor() const
 {
-    return true; // (change this to false if you choose to not supply an editor)
+    return true;
 }
 
 juce::AudioProcessorEditor* DrawingSquaresAudioProcessor::createEditor()
@@ -165,7 +158,7 @@ juce::AudioProcessorEditor* DrawingSquaresAudioProcessor::createEditor()
 //==============================================================================
 void DrawingSquaresAudioProcessor::getStateInformation (juce::MemoryBlock& destData)
 {
-    auto state = stateStore.copyState();
+    auto state = apvts.copyState();
     std::unique_ptr<juce::XmlElement> xml (state.createXml());
 //    std::cout << xml << "TEST";
 }
@@ -175,28 +168,22 @@ void DrawingSquaresAudioProcessor::setStateInformation (const void* data, int si
 }
 
 //JXN Function to create APVTS params
-
 juce::AudioProcessorValueTreeState::ParameterLayout
 DrawingSquaresAudioProcessor::myParameterLayout()
 {
-    return {
-        std::make_unique<juce::AudioParameterBool>(juce::ParameterID {"poopParameterId", 1}, "poopParameterId", false)
-    };
+    juce::AudioProcessorValueTreeState::ParameterLayout params;
+    
+    //Scale Buttons (I think the audio unit identifier has to start with 1)
+    for (int i = 1; i < 8; ++i)
+    {
+        //params.add(std::make_unique<juce::AudioParameterBool>(juce::ParameterID {juce::String (i),i},juce::String (i), 1));
+        juce::String paramName = "ScaleButton_" + juce::String(i);
+        params.add(std::make_unique<juce::AudioParameterBool>(juce::ParameterID {paramName,i},paramName, 1));
+    }
+
+    return params;
+    
 }
-
-
-
-//juce::AudioProcessorValueTreeState::ParameterLayout
-//DrawingSquaresAudioProcessor::createParameterLayout()
-//{
-//    juce::AudioProcessorValueTreeState::ParameterLayout params;
-//
-//    for (int i = 1; i < 9; ++i) {
-//        params.add(std::make_unique<juce::AudioParameterFloat>(juce::ParameterID {juce::String (i),i}, juce::String (i), juce::NormalisableRange<float>(0.001, 0.5, 0.001), 0.002));
-//    }
-//    return params;
-//}
-
 
 //==============================================================================
 // This creates new instances of the plugin..

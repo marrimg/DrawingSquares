@@ -27,8 +27,7 @@ public:
     void resized() override;
     
     typedef juce::AudioProcessorValueTreeState::ButtonAttachment ButtonAttachment;
-//    juce::AudioProcessorValueTreeState::ButtonAttachment ButtonAttachment(audioProcessor, "assButton", assButt);
-
+    
 private:
 
     DrawingSquaresAudioProcessor& audioProcessor;
@@ -36,11 +35,6 @@ private:
     juce::AudioProcessorParameterGroup scaleButt1Parameter;
     
     int border = 4;
-    
-    int buttonHeight = 100;
-    int buttonWidth = 60;
-    
-
     
     SceneComponent scene;
 

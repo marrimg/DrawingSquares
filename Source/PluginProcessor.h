@@ -23,7 +23,7 @@ public:
     DrawingSquaresAudioProcessor();
     ~DrawingSquaresAudioProcessor() override;
     
-    juce::AudioProcessorValueTreeState& getVTS() { return stateStore;
+    juce::AudioProcessorValueTreeState& getVTS() { return apvts;
     };
     
 
@@ -60,12 +60,11 @@ public:
     void getStateInformation (juce::MemoryBlock& destData) override;
     void setStateInformation (const void* data, int sizeInBytes) override;
 
-    //JXN add AVPTS (everything is in pp.h and pp.cpp in this example
-    juce::Value poopParameter;
-    std::atomic<float>* poopParam = nullptr;
+    //juce::Value poopParameter;
+    //std::atomic<float>* poopParam = nullptr;
     
 private:
-    juce::AudioProcessorValueTreeState stateStore;
+    juce::AudioProcessorValueTreeState apvts;
     static juce::AudioProcessorValueTreeState::ParameterLayout myParameterLayout();
     void linkParameterValues();
     //==============================================================================

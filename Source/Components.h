@@ -26,26 +26,22 @@ public:
     SceneComponent(DrawingSquaresAudioProcessor& p)
     {
         setLookAndFeel(&mainLookAndFeel);
-        addAndMakeVisible(button1);
-        poopAttachment.reset(new juce::AudioProcessorValueTreeState::ButtonAttachment(p.getVTS(), "poopParameterId", button1));
-        button1.setButtonText("PooP");
+        //addAndMakeVisible(button1);
+        //poopAttachment.reset(new juce::AudioProcessorValueTreeState::ButtonAttachment(p.getVTS(), "poopParameterId", button1));
+        //button1.setButtonText("PooP");
  
-//        poopAttachment.reset (new juce::AudioProcessorValueTreeState::ButtonAttachment (apvts, "poopButton", button1));
-        std::vector<std::string> scaleButtonLabels = {"A", "B", "C", "D", "E", "F", "G"};
+        std::vector<std::string> scaleButtonLabels = {"C", "C#", "D", "D#", "E", "F", "G"};
         
         for (int i = 0; i <= scaleButtonLabels.size(); i++)
         {
           auto scaleButt = std::make_unique<juce::TextButton>(scaleButtonLabels[i]);
-          scaleButt->setBounds(i * 100, 100, 100, 100);
+          scaleButt->setBounds(i * buttonWidth + 10, 100, buttonWidth, buttonHeight);
           addAndMakeVisible(*scaleButt);
           p.addParameter (new juce::AudioParameterBool (juce::ParameterID {i, 1}, "scaleButt", false));
-//          p.addParameter(("scaleButt-" += std::to_string(i)) = std::make_unique<juce::AudioParameterBool> (std::string ("scaleButt-" += std::to_string(i)), std::string ("scaleButt-" += std::to_string(i)), 0, i, 0));
-//            p.addParameter(juce::ParameterID {"poopParameterId", 1}, "poopParameterId", false);
-//            text += std::to_string(i)
+
           scaleButtons.push_back(std::move(scaleButt));
         }
         
-//        buttonAttachment = std::make_unique<juce::AudioProcessorValueTreeState::ButtonAttachment>(audioProcessor.apvts, "apvtsButtVar", scene.chordButton2);
     }
     
     void paint (juce::Graphics& g) override
@@ -72,6 +68,5 @@ private:
     int border = 4;
     int buttonHeight = 100;
     int buttonWidth = 60;
-//    std::unique_ptr<juce::AudioProcessorValueTreeState::ButtonAttachment> poopAttachment;
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (SceneComponent)
 };
