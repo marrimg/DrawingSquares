@@ -180,12 +180,10 @@ juce::AudioProcessorValueTreeState::ParameterLayout
 DrawingSquaresAudioProcessor::myParameterLayout()
 {
     return {
-        std::make_unique<juce::AudioParameterBool>(juce::ParameterID {"poopParameterId", 1}, "poopParameterId", false)
+        std::make_unique<juce::AudioParameterBool>(juce::ParameterID {"poopParameterId", 1}, "poopParameterId", false),
+        std::make_unique<juce::AudioParameterBool>(juce::ParameterID {1, 1}, "scaleButt", false)
     };
-}
-
-
-
+};
 //juce::AudioProcessorValueTreeState::ParameterLayout
 //DrawingSquaresAudioProcessor::createParameterLayout()
 //{
