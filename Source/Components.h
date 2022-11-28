@@ -13,6 +13,7 @@
 #include "GuiElements.h"
 #include "PluginEditor.h"
 #include "PluginProcessor.h"
+const std::vector<std::string> noteNames = {"C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"};
 
 //==============================================================================
 class SceneComponent: public juce::Component
@@ -26,19 +27,15 @@ public:
     SceneComponent(DrawingSquaresAudioProcessor& p)
     {
         setLookAndFeel(&mainLookAndFeel);
-        //addAndMakeVisible(button1);
-        //poopAttachment.reset(new juce::AudioProcessorValueTreeState::ButtonAttachment(p.getVTS(), "poopParameterId", button1));
-        //button1.setButtonText("PooP");
- 
-        std::vector<std::string> scaleButtonLabels = {"C", "C#", "D", "D#", "E", "F", "G"};
+       
         
-        for (int i = 0; i <= scaleButtonLabels.size(); i++)
+        for (int i = 0; i <= noteNames.size(); i++)
         {
-          auto scaleButt = std::make_unique<juce::TextButton>(scaleButtonLabels[i]);
+          auto scaleButt = std::make_unique<juce::TextButton>(noteNames[i]);
           scaleButt->setBounds(i * buttonWidth + 10, 100, buttonWidth, buttonHeight);
           addAndMakeVisible(*scaleButt);
           p.addParameter (new juce::AudioParameterBool (juce::ParameterID {i, 1}, "scaleButt", false));
-
+            //buttonAttachment.reset(new juce::AudioProcessorValueTreeState::ButtonAttachment(p.getVTS(), "poopParameterId", button1));
           scaleButtons.push_back(std::move(scaleButt));
         }
         
@@ -64,7 +61,7 @@ public:
 private:
     //==============================================================================
 
-    std::unique_ptr<juce::AudioProcessorValueTreeState::ButtonAttachment> poopAttachment;
+    std::unique_ptr<juce::AudioProcessorValueTreeState::ButtonAttachment> buttonAttachment;
     int border = 4;
     int buttonHeight = 100;
     int buttonWidth = 60;

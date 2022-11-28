@@ -29,11 +29,6 @@ DrawingSquaresAudioProcessor::DrawingSquaresAudioProcessor()
 DrawingSquaresAudioProcessor::~DrawingSquaresAudioProcessor()
 {
 }
-
-void DrawingSquaresAudioProcessor::linkParameterValues() {
-    //poopParameter.referTo(apvts.getParameterAsValue("poopParameterId"));
-}
-
 //==============================================================================
 const juce::String DrawingSquaresAudioProcessor::getName() const
 {
@@ -135,9 +130,10 @@ void DrawingSquaresAudioProcessor::processBlock (juce::AudioBuffer<float>& buffe
     auto totalNumInputChannels  = getTotalNumInputChannels();
     auto totalNumOutputChannels = getTotalNumOutputChannels();
 
+    
     for (auto i = totalNumInputChannels; i < totalNumOutputChannels; ++i)
         buffer.clear (i, 0, buffer.getNumSamples());
-
+    
     for (int channel = 0; channel < totalNumInputChannels; ++channel)
     {
 
@@ -166,6 +162,11 @@ void DrawingSquaresAudioProcessor::getStateInformation (juce::MemoryBlock& destD
 void DrawingSquaresAudioProcessor::setStateInformation (const void* data, int sizeInBytes)
 {
 }
+
+void DrawingSquaresAudioProcessor::linkParameterValues() {
+    scaleButtParam_1 = apvts.getRawParameterValue("ScaleButton_1");
+}
+
 
 //JXN Function to create APVTS params
 juce::AudioProcessorValueTreeState::ParameterLayout
